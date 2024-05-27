@@ -1,8 +1,8 @@
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update
 from telegram.ext import Application, CommandHandler, CallbackQueryHandler, ContextTypes
 
-# استبدل '6839038529:AAHpjGbxIyzR3RxkCjU00wnKV5_0qHQvKL0' بالتوكن الخاص بتيليجرام بوت
-TOKEN = '6140466392:AAGJFe_5m99exYASCm5Ne0_MNmItkHHokCQ'
+# استبدل 'YOUR_TOKEN_HERE' بالتوكن الخاص بتيليجرام بوت
+TOKEN = '6839038529:AAHpjGbxIyzR3RxkCjU00wnKV5_0qHQvKL0'
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     await update.message.reply_text('ᴡᴇʟᴄᴏᴍᴇ ᴛᴏ ᴛʜᴇ ᴀᴠɪᴀᴛᴏʀ ᴘʀᴇᴅɪᴄᴛᴏʀ ᴀɴᴅ ᴄʀᴀꜱʜ ʙᴏᴛ\n\n📈 ʏᴏᴜ ᴄᴀɴ ᴘʟᴀʏ ꜰᴏʀ ᴀɴʏ ᴀᴍᴏᴜɴᴛ 100% ʜɪɢʜ ᴀᴄᴄᴜʀᴀᴄʏ ᴘʀᴇᴅɪᴄᴛɪᴏɴꜱ\n\n✴️ ᴀᴠɪᴀᴛᴏʀ ᴘʀᴇᴅɪᴄᴛᴏʀ ɪꜱ ᴀ ᴛᴏᴏʟ ᴅᴇꜱɪɢɴᴇᴅ ᴛᴏ ᴘʀᴇᴅɪᴄᴛ ᴍᴜʟᴛɪᴘʟɪᴇʀꜱ ɪɴ ᴛʜᴇ ʙᴇᴛᴛɪɴɢ ɢᴀᴍᴇ ᴀᴠɪᴀᴛᴏʀ, ʜᴇʟᴘɪɴɢ ᴘʟᴀʏᴇʀꜱ ꜱᴇᴄᴜʀᴇ ᴛʜᴇɪʀ ᴡɪɴɴɪɴɢꜱ.')
@@ -60,17 +60,29 @@ async def button_handler(update: Update, context: ContextTypes.DEFAULT_TYPE) -> 
         elif round_number == 2:
             next_text = "𝟭.𝟬𝟰𝘅"
             next_round = 3
+        elif round_number == 3:
+            next_text = "𝟭.𝟴𝟰𝘅"
+            next_round = 4
+        elif round_number == 4:
+            next_text = "𝟯.𝟳𝟬𝘅"
+            next_round = 5
+        elif round_number == 5:
+            next_text = "𝟭.𝟭𝟱𝘅"
+            next_round = 6
+        elif round_number == 6:
+            next_text = "𝟭.𝟯𝟬𝘅"
+            next_round = None
         else:
             next_text = "End of rounds."
             next_round = None
 
         keyboard = [
             [
-                InlineKeyboardButton("𝙽𝙴𝚆 𝚁𝙾𝚄𝙽𝙳𝙴 😈", callback_data=f'new_round_{next_round}') if next_round else None
+                InlineKeyboardButton("𝙽𝙴𝚆 𝚁𝙾𝚄𝙽𝙳𝙴 😈", callback_data='new_round')
             ]
         ]
-        reply_markup = InlineKeyboardMarkup([btn for btn in keyboard if btn[0] is not None])
-        await query.edit_message_text(text=next_text, reply_markup=reply_markup)
+        reply_markup = InlineKeyboardMarkup(keyboard)
+        await query.edit_message_text(text="اتصل بالمسؤول للحصول على صلاحية الروبوت\n𝘊𝘰𝘯𝘵𝘢𝘤𝘵 𝘈𝘥𝘮𝘪𝘯 𝘮𝘦 𝘨𝘦𝘵 𝘣𝘰𝘵 𝘷𝘢𝘭𝘪𝘥𝘪𝘵𝘺\n\n@ivetv", reply_markup=reply_markup)
 
 def main() -> None:
     application = Application.builder().token(TOKEN).build()
